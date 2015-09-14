@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrganizationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="OrganizationModelStoreContainer">
+    <EntitySet Name="tbl_Dept" EntityType="OrganizationModel.Store.tbl_Dept" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_Emp" EntityType="OrganizationModel.Store.tbl_Emp" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_tbl_Emp_tbl_Dept" Association="OrganizationModel.Store.FK_tbl_Emp_tbl_Dept">
+      <End Role="tbl_Dept" EntitySet="tbl_Dept" />
+      <End Role="tbl_Emp" EntitySet="tbl_Emp" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_Dept">
+    <Key>
+      <PropertyRef Name="DeptId" />
+    </Key>
+    <Property Name="DeptId" Type="int" Nullable="false" />
+    <Property Name="DeptName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DeptHOD" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_Emp">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EmpName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="EmpSalary" Type="float" Nullable="false" />
+    <Property Name="EmpGender" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="EmpDOB" Type="datetime" Nullable="false" />
+    <Property Name="EmailId" Type="varchar" MaxLength="50" />
+    <Property Name="DeptId" Type="int" />
+  </EntityType>
+  <Association Name="FK_tbl_Emp_tbl_Dept">
+    <End Role="tbl_Dept" Type="OrganizationModel.Store.tbl_Dept" Multiplicity="0..1" />
+    <End Role="tbl_Emp" Type="OrganizationModel.Store.tbl_Emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="tbl_Emp">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OrganizationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OrganizationModelStoreContainer">
+          <EntitySet Name="tbl_Dept" EntityType="OrganizationModel.Store.tbl_Dept" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Emp" EntityType="OrganizationModel.Store.tbl_Emp" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tbl_Emp_tbl_Dept" Association="OrganizationModel.Store.FK_tbl_Emp_tbl_Dept">
+            <End Role="tbl_Dept" EntitySet="tbl_Dept" />
+            <End Role="tbl_Emp" EntitySet="tbl_Emp" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Dept">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="int" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DeptHOD" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Emp">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="EmpSalary" Type="float" Nullable="false" />
+          <Property Name="EmpGender" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="EmpDOB" Type="datetime" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="DeptId" Type="int" />
+        </EntityType>
+        <Association Name="FK_tbl_Emp_tbl_Dept">
+          <End Role="tbl_Dept" Type="OrganizationModel.Store.tbl_Dept" Multiplicity="0..1" />
+          <End Role="tbl_Emp" Type="OrganizationModel.Store.tbl_Emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Dept">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="tbl_Emp">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrganizationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Dept" EntityType="OrganizationModel.tbl_Dept" />
+          <EntitySet Name="tbl_Emp" EntityType="OrganizationModel.tbl_Emp" />
+          <AssociationSet Name="FK_tbl_Emp_tbl_Dept" Association="OrganizationModel.FK_tbl_Emp_tbl_Dept">
+            <End Role="tbl_Dept" EntitySet="tbl_Dept" />
+            <End Role="tbl_Emp" EntitySet="tbl_Emp" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Dept">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="Int32" Nullable="false" />
+          <Property Name="DeptName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DeptHOD" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbl_Emp" Relationship="OrganizationModel.FK_tbl_Emp_tbl_Dept" FromRole="tbl_Dept" ToRole="tbl_Emp" />
+        </EntityType>
+        <EntityType Name="tbl_Emp">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmpSalary" Type="Double" Nullable="false" />
+          <Property Name="EmpGender" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="EmpDOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmailId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DeptId" Type="Int32" />
+          <NavigationProperty Name="tbl_Dept" Relationship="OrganizationModel.FK_tbl_Emp_tbl_Dept" FromRole="tbl_Emp" ToRole="tbl_Dept" />
+        </EntityType>
+        <Association Name="FK_tbl_Emp_tbl_Dept">
+          <End Role="tbl_Dept" Type="OrganizationModel.tbl_Dept" Multiplicity="0..1" />
+          <End Role="tbl_Emp" Type="OrganizationModel.tbl_Emp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Dept">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="tbl_Emp">
+              <PropertyRef Name="DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrganizationModelStoreContainer" CdmEntityContainer="MyDBEntities">
+          <EntitySetMapping Name="tbl_Dept">
+            <EntityTypeMapping TypeName="OrganizationModel.tbl_Dept">
+              <MappingFragment StoreEntitySet="tbl_Dept">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="DeptHOD" ColumnName="DeptHOD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Emp">
+            <EntityTypeMapping TypeName="OrganizationModel.tbl_Emp">
+              <MappingFragment StoreEntitySet="tbl_Emp">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+                <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
+                <ScalarProperty Name="EmpDOB" ColumnName="EmpDOB" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
