@@ -64,6 +64,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DeptManagement.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +73,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrganizationDBModel.edmx</DependentUpon>
     </Content>
+    <Compile Include="DeptManagement.aspx.cs">
+      <DependentUpon>DeptManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeptManagement.aspx.designer.cs">
+      <DependentUpon>DeptManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,3 +3,4 @@ C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\EntityFrameWork\bin\E
 C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\EntityFrameWork\bin\EntityFramework.xml
 C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\EntityFrameWork\obj\Debug\EntityFrameWork.dll
 C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\EntityFrameWork\obj\Debug\EntityFrameWork.pdb
+C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\EntityFrameWork\obj\Debug\EntityFrameWork.csprojResolveAssemblyReference.cache
