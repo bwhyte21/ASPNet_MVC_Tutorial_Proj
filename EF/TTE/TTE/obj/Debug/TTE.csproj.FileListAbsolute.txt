@@ -1,0 +1,4 @@
+C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\TTE\TTE\bin\TTE.dll
+C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\TTE\TTE\bin\TTE.pdb
+C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\TTE\TTE\obj\Debug\TTE.dll
+C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\EF\TTE\TTE\obj\Debug\TTE.pdb

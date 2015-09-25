@@ -50,7 +50,7 @@
 						<asp:Button ID="btnCancel" Text="Cancel" runat="server" />
 					</td>
 					<td>
-						<asp:Button ID="btnSave" Text="Save" runat="server" />
+						<asp:Button ID="btnSave" Text="Save" runat="server" OnClick="btnSave_Click" />
 						<asp:Button ID="btnUpdate" Text="Update" runat="server" />
 						<asp:Button ID="btnDelete" Text="Delete" runat="server" />
 					</td>

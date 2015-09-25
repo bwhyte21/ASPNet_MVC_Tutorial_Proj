@@ -30,32 +30,32 @@ namespace EntityFrameWork.App_Code
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class MyDBEntities : ObjectContext
+    public partial class OrganizationDBEntities : ObjectContext
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new MyDBEntities object using the connection string found in the 'MyDBEntities' section of the application configuration file.
+        /// Initializes a new OrganizationDBEntities object using the connection string found in the 'OrganizationDBEntities' section of the application configuration file.
         /// </summary>
-        public MyDBEntities() : base("name=MyDBEntities", "MyDBEntities")
+        public OrganizationDBEntities() : base("name=OrganizationDBEntities", "OrganizationDBEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new MyDBEntities object.
+        /// Initialize a new OrganizationDBEntities object.
         /// </summary>
-        public MyDBEntities(string connectionString) : base(connectionString, "MyDBEntities")
+        public OrganizationDBEntities(string connectionString) : base(connectionString, "OrganizationDBEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new MyDBEntities object.
+        /// Initialize a new OrganizationDBEntities object.
         /// </summary>
-        public MyDBEntities(EntityConnection connection) : base(connection, "MyDBEntities")
+        public OrganizationDBEntities(EntityConnection connection) : base(connection, "OrganizationDBEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrganizationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="OrganizationDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Dept" EntityType="OrganizationModel.tbl_Dept" />
+    <EntitySet Name="tbl_Emp" EntityType="OrganizationModel.tbl_Emp" />
+    <AssociationSet Name="FK_tbl_Emp_tbl_Dept" Association="OrganizationModel.FK_tbl_Emp_tbl_Dept">
+      <End Role="tbl_Dept" EntitySet="tbl_Dept" />
+      <End Role="tbl_Emp" EntitySet="tbl_Emp" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_Dept">
+    <Key>
+      <PropertyRef Name="DeptId" />
+    </Key>
+    <Property Name="DeptId" Type="Int32" Nullable="false" />
+    <Property Name="DeptName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DeptHOD" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="tbl_Emp" Relationship="OrganizationModel.FK_tbl_Emp_tbl_Dept" FromRole="tbl_Dept" ToRole="tbl_Emp" />
+  </EntityType>
+  <EntityType Name="tbl_Emp">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EmpSalary" Type="Double" Nullable="false" />
+    <Property Name="EmpGender" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="EmpDOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmailId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DeptId" Type="Int32" />
+    <NavigationProperty Name="tbl_Dept" Relationship="OrganizationModel.FK_tbl_Emp_tbl_Dept" FromRole="tbl_Emp" ToRole="tbl_Dept" />
+  </EntityType>
+  <Association Name="FK_tbl_Emp_tbl_Dept">
+    <End Role="tbl_Dept" Type="OrganizationModel.tbl_Dept" Multiplicity="0..1" />
+    <End Role="tbl_Emp" Type="OrganizationModel.tbl_Emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="tbl_Emp">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

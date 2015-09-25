@@ -1,0 +1,6 @@
+Sid
+SName
+Email
+Avg
+Contact
+Address

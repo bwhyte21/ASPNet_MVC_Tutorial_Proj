@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="OrganizationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="OrganizationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="OrganizationModelStoreContainer">
           <EntitySet Name="tbl_Dept" EntityType="OrganizationModel.Store.tbl_Dept" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tbl_Emp" EntityType="OrganizationModel.Store.tbl_Emp" store:Type="Tables" Schema="dbo" />
@@ -45,11 +45,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OrganizationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="MyDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OrganizationDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbl_Dept" EntityType="OrganizationModel.tbl_Dept" />
           <EntitySet Name="tbl_Emp" EntityType="OrganizationModel.tbl_Emp" />
           <AssociationSet Name="FK_tbl_Emp_tbl_Dept" Association="OrganizationModel.FK_tbl_Emp_tbl_Dept">
@@ -96,7 +97,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OrganizationModelStoreContainer" CdmEntityContainer="MyDBEntities">
+        <EntityContainerMapping StorageEntityContainer="OrganizationModelStoreContainer" CdmEntityContainer="OrganizationDBEntities">
           <EntitySetMapping Name="tbl_Dept">
             <EntityTypeMapping TypeName="OrganizationModel.tbl_Dept">
               <MappingFragment StoreEntitySet="tbl_Dept">

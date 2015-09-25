@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace EntityFrameWork
 {
 	public partial class DeptManagement : System.Web.UI.Page
@@ -12,6 +13,11 @@ namespace EntityFrameWork
 		protected void Page_Load(object sender, EventArgs e)
 		{
 
+		}
+
+		protected void btnSave_Click(object sender, EventArgs e)
+		{
+		
 		}
 	}
 }

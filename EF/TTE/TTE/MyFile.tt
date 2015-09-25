@@ -1,0 +1,36 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+public class MyClass
+{
+<# for(int i=1; i<=10; i++)
+{ #>
+	public int P<#= i#> {get; set;}
+<# } #>
+}
+//String Array
+<# string[] s={"Sid","SName","Age"}; #>
+class Student
+{
+<#foreach(var item in s)
+{#>
+	public string <#= item#> {get; set;}
+<#}#>
+}
+
+//Reading from an external file
+<# string[] s2= System.IO.File.ReadAllLines(@"C:\Users\bwhyte\Desktop\GitHub\ASPNet_MVC_Tutorial_Proj\Test_Files\MyData.txt"); #> 
+class NewStudent
+{
+<#foreach(var item in s2)
+{#>
+	public string <#= item#> {get; set;}
+<#}#>
+}
+//To automatically generate model classes
+// input(.txt) => .tt => .cs
+//Entity Framework (how EF code is generated with .tt files)
+// input(.edmx) => .tt*2 => .cs*2
